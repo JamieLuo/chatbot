@@ -1,18 +1,18 @@
-FROM node:12
+FROM python:3.9
 
-WORKDIR /dockerApp
+#WORKDIR /dockerApp
 
-COPY *.py ./
+ADD chatBot.py .
 
-RUN npm install
+RUN pip install requests beautifulsoup4 python-dotenv
 
-COPY . .
+#COPY . .
 
-Env PORT=8080
+ENV PORT=8080
 
 EXPOSE 8080
 
-CMD ["npm","start"]
+CMD ["python","./chatBot.py"]
 
 ###
 # Dockerfile for quay.io/kitti/distributed
