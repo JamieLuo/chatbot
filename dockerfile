@@ -1,8 +1,10 @@
 FROM python:3.9
 
-#WORKDIR /dockerApp
+WORKDIR /dockerApp
 
 ADD chatBot.py .
+
+COPY . /dockerApp/
 
 RUN pip install requests beautifulsoup4 python-dotenv
 
