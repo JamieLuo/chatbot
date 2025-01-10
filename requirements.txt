@@ -1,0 +1,13 @@
+--upgrade gradio
+gradio_client
+langchain
+
+langchain-community
+langchain-qdrant
+qdrant-client
+fastembed
+"xinference[all]"
+
+
+
+

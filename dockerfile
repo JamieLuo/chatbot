@@ -1,14 +1,18 @@
 FROM python:3.9
 
+RUN pip install --upgrade pip
+
+RUN pip install requests
+
+RUN pip install -r ./requirements.txt
+
+#COPY . .
+
 WORKDIR /dockerApp
 
 ADD chatBot.py .
 
-COPY . /dockerApp/
-
-RUN pip install requests beautifulsoup4 python-dotenv
-
-#COPY . .
+COPY . /dockerApp
 
 ENV PORT=8080
 
