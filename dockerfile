@@ -4,8 +4,17 @@ RUN pip install --upgrade pip
 
 RUN pip install requests
 
-RUN pip install -r ../chatBot/requirements.txt
+#RUN pip install -r requirements.txt
+RUN pip install gradio
+RUN pip install gradio_client
+RUN pip install langchain
 
+RUN pip install langchain-community
+RUN pip install langchain-qdrant
+RUN pip install qdrant-client
+RUN pip install fastembed
+RUN pip install langchain-openai
+#RUN pip install "xinference[all]"
 #COPY . .
 
 WORKDIR /dockerApp

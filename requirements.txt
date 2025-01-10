@@ -6,7 +6,7 @@ langchain-community
 langchain-qdrant
 qdrant-client
 fastembed
-"xinference[all]"
+xinference[all]
 
 
 
