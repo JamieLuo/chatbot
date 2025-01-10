@@ -4,7 +4,7 @@ RUN pip install --upgrade pip
 
 RUN pip install requests
 
-RUN pip install -r ./requirements.txt
+RUN pip install -r ../chatBot/requirements.txt
 
 #COPY . .
 

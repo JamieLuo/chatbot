@@ -1,4 +1,4 @@
---upgrade gradio
+gradio
 gradio_client
 langchain
 
