@@ -5,14 +5,17 @@ from qdrant_client.http.models import Distance, VectorParams
 from langchain_openai import OpenAIEmbeddings
 from langchain_qdrant import RetrievalMode
 from initEmbedding import bgeEmbedding
+import tkinter as tk
+from tkinter import filedialog
 
 class vectorDB:
     docs = None
     embedModel = None
-    path = "c:/users/lc/documents/wellav"
+    path = ""
     qdrant = None
 
     def __init__(self):
+        self.getFilePath()
         self.loadKnowledgeBase()
         self.getEmbedding()
         self.qdrant = QdrantVectorStore.from_documents(
@@ -22,6 +25,11 @@ class vectorDB:
             collection_name="my_documents",
             retrieval_mode=RetrievalMode.DENSE,
         )
+
+    def getFilePath(self):
+        root = tk.Tk()
+        root.withdraw()
+        self.path = filedialog.askdirectory(title='Select Folder')
 
     def loadKnowledgeBase(self):
         loader=fileloader.fileloader(self.path)
