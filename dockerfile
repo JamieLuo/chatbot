@@ -14,6 +14,8 @@ RUN pip install langchain-qdrant
 RUN pip install qdrant-client
 RUN pip install fastembed
 RUN pip install langchain-openai
+RUN pip install pypdf
+RUN pip install sentence-transformers
 #RUN pip install "xinference[all]"
 #COPY . .
 
@@ -24,6 +26,8 @@ ADD chatBot.py .
 COPY . /dockerApp
 
 ENV PORT=8080
+#fixing tktiner display error your ip:0.0
+#ENV DISPLAY=10.200.0.161:0.0  not working. choosing to not use tkinter
 
 EXPOSE 8080
 

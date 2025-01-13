@@ -27,10 +27,11 @@ class vectorDB:
         )
 
     def getFilePath(self):
-        root = tk.Tk()
-        root.withdraw()
-        self.path = filedialog.askdirectory(title='Select Folder')
-
+        #root = tk.Tk()
+        #root.withdraw()
+        #self.path = filedialog.askdirectory(title='Select Folder')
+        self.path = "./knowledgeBase/"
+        
     def loadKnowledgeBase(self):
         loader=fileloader.fileloader(self.path)
         loader.loadallfiles()
