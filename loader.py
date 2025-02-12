@@ -1,9 +1,7 @@
 from langchain_community.document_loaders import PyPDFLoader,TextLoader,MergedDataLoader
-from langchain.document_loaders import DirectoryLoader
-
+from langchain_community.document_loaders import DirectoryLoader
 
 class fileloader:
-
     path:str = ""
 
     def __init__(self, path):
@@ -17,4 +15,3 @@ class fileloader:
 
     def getfiles(self):
         return self.filelist
-    

@@ -4,8 +4,7 @@ from gradio_client import Client
 from promptConstruct import constructPrompt
 
 DB=vectorDB()
-client = Client("http://127.0.0.1:9997/qwen2.5-instruct/") #locally hosted llm endpoint 
-#client = Client("http://host.docker.internal:9997/qwen2.5-instruct/") #code is a docker container
+client = Client("http://localhost:9997/qwen2.5-instruct/") #locally hosted llm endpoint 
 def llm_response(message, history):
     topK = DB.query(message)
     prompt = constructPrompt(topK, message)
@@ -15,4 +14,4 @@ def llm_response(message, history):
 		param_3=1,
 		param_4=prompt,
 		api_name="/chat"
-    )   
+    )

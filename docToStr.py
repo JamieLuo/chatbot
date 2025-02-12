@@ -7,7 +7,6 @@ from langchain.schema.document import Document
  * @returns A string of the documents page content, separated by newlines.
  '''
 
-
 def docToStr(documents):
     docStrList = []
     for file in documents:
@@ -16,7 +15,3 @@ def docToStr(documents):
             fileStr.append(file.dict()[key].join("\n\n"))
         docStrList.append(fileStr)
     return docStrList
-    
-    
-    
-    #docStr = (documents: Document[]): string => documents.map((doc) => doc.pageContent).join("\n\n")

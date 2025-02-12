@@ -1,10 +1,11 @@
-FROM python:3.9
+FROM python:3.10
+
+RUN echo "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple" > /etc/pip.conf
 
 RUN pip install --upgrade pip
 
 RUN pip install requests
 
-#RUN pip install -r requirements.txt
 RUN pip install gradio
 RUN pip install gradio_client
 RUN pip install langchain
@@ -16,35 +17,19 @@ RUN pip install fastembed
 RUN pip install langchain-openai
 RUN pip install pypdf
 RUN pip install sentence-transformers
-#RUN pip install "xinference[all]"
-#COPY . .
 
-WORKDIR /dockerApp
+WORKDIR /chatBot
 
-ADD chatBot.py .
+ENV HF_ENDPOINT=https://hf-mirror.com
 
-COPY . /dockerApp
+RUN huggingface-cli download BAAI/bge-base-en-v1.5 --cache-dir /chatBot/cache
+
+RUN pip install langchain-huggingface
+
+COPY . /chatBot
 
 ENV PORT=8080
-#fixing tktiner display error your ip:0.0
-#ENV DISPLAY=10.200.0.161:0.0  not working. choosing to not use tkinter
 
 EXPOSE 8080
 
-CMD ["python","./chatBot.py"]
-
-###
-# Dockerfile for quay.io/kitti/distributed
-
-#FROM python:3.9-slim-buster
-
-#WORKDIR /app
-
-#COPY requirements.txt /
-#RUN pip install --trusted-host pypi.org --trusted-hashes https://pypi.tuna.tsinghua.edu.cn/simple
-
-#COPY..
-
-#CMD ["gunicorn", "-w", "5", "-b", "0.0.0.0:8786", "dataset_server.wsgi:application"]
-
-###
+CMD ["python", "chatBot.py"]
